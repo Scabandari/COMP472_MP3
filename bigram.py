@@ -1,19 +1,24 @@
 import itertools
 import json
+import string
 
 
 base_dictionary = {}
 alphabets_list = ['a', 'b', 'c', 'd', 'e', 'f', 'g',
             'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
             'q', 'r', 's', 't', 'u', 'v',
-            'w', 'x', 'y', 'z']
+            'w', 'x', 'y', 'z', ' ']
+# mix in a space to counts for the appearance of single letter (eg." I ") as well as starting and ending letters
+
 for i, j in itertools.product(alphabets_list, alphabets_list):
     base_dictionary[i + j] = 0
-
+base_dictionary.pop('  ', None)  # removes the "  " double space instance because that's not part of any word
 # print(base_dictionary)
 
 
 def model_output(language_combined_txt, language):
+    translator = str.maketrans(string.punctuation, ' '*len(string.punctuation))  # to replace all punctuation by space
+
     language_bigram_dictionary = base_dictionary
     with open(language_combined_txt) as file:
 
@@ -21,9 +26,10 @@ def model_output(language_combined_txt, language):
         # print(len(data))
         for line in data:
             # print(line)
-            for char in range(1, len(line)):
+            newline = line.translate(translator)
+            for char in range(1, len(newline)):
                 try:
-                    language_bigram_dictionary[line[char-1].lower() + line[char].lower()] += 1
+                    language_bigram_dictionary[newline[char-1].lower() + newline[char].lower()] += 1
                 except KeyError:
                     pass  # welcome to exception programming
     file.close()
@@ -52,11 +58,15 @@ def bigram_by_language(sentence):
     :param sentence: string of sentence in unknown language
     :return: language_approximation:
     """
+    # refer to slide 6 NLP page 41
+    # the algorithm is log(P(c))+sum(log(P(w|c)))
+    # P(c) is 1/3, P(w|c) is the values in the language's bigram model file
+    # smoothing using add-delta with delta=0.5, |vocabulary| = (27*27-1)/2 = 364
     pass
 
 
 if __name__ == "__main__":
-    LANGUAGE = 'FR'
+    LANGUAGE = 'OT'
     language_combined_text = 'train' + LANGUAGE + '.txt'
     language_model = model_output(language_combined_text, LANGUAGE)
     print(language_model)
