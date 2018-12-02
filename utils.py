@@ -17,7 +17,7 @@ def output_models(unigram_en, unigram_fr, unigram_ot=None, bigram_en=None, bigra
          ('unigramFR.txt', unigram_fr),
         # ('bigramEN.txt', bigram_en),
         # ('bigramFR.txt', bigram_fr),
-        # ('unigramOT.txt', unigram_ot),
+        ('unigramOT.txt', unigram_ot),
         # ('bigramOT.txt', bigram_ot)
     ]
 

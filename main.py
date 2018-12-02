@@ -17,6 +17,9 @@ combine_txt_files(english_txts, 'trainEN.txt')  # outputs both English files as 
 french_txts = ['fr-le-petit-prince.txt', 'fr-vingt-mille-lieues-sous-les-mers.txt']
 combine_txt_files(french_txts, 'trainFR.txt')
 
+spanish_txts = ['es-don-quixote.txt', 'es-garcia-marquez-gabriel-cien-anos-de-soledad.txt']
+combine_txt_files(spanish_txts, 'trainOT.txt')
+
 # todo IF WE'RE GIVEN NEW FILES FOR TRAINING DURING DEMO JUST COMMENT OUT THE combine_txt_files ABOVE
 # assign_freqs() below will read the texts if names of files are correct
 
@@ -48,10 +51,22 @@ for key in unigram_models_fr.keys():
 
 assign_probs(total_chars, unigram_models_fr, unigram=True)
 print("French Unigram total chars: {}".format(total_chars))
-print_unigram(unigram_models_en)
+print_unigram(unigram_models_fr)
 
 # UNIGRAM OTHER ############################################################################################
+unigram_models_ot = {}
+unigram_keys(unigram_models_ot)
 
+
+assign_freqs('trainOT.txt', unigram_models_ot, unigram=True)
+
+total_chars = 0
+for key in unigram_models_ot.keys():
+    total_chars += unigram_models_ot[key]['freq']
+
+assign_probs(total_chars, unigram_models_ot, unigram=True)
+print("Spanish(Other) Unigram total chars: {}".format(total_chars))
+print_unigram(unigram_models_ot)
 
 # BIRGRAMS ENGLISH ######################################################################################
 
@@ -64,12 +79,13 @@ print_unigram(unigram_models_en)
 
 ######################################################################################################
 # output_models(unigram_en, unigram_fr, unigram_ot=None, bigram_en=None, bigram_fr=None, bigram_ot=None)
-output_models(unigram_models_en, unigram_models_fr)  # todo include more models here as they're developed
+output_models(unigram_models_en, unigram_models_fr, unigram_ot=unigram_models_ot)  # todo include more models here as they're developed
 # outputs txt files for specific models, their probabilities for each input chars for uni and char pairs for bi
 
 unigrams = [
     ('FRENCH', unigram_models_fr),
-    ('ENGLISH', unigram_models_en)
+    ('ENGLISH', unigram_models_en),
+    ('OTHER', unigram_models_ot)
     #('OTHER', ...)
 ]
 
