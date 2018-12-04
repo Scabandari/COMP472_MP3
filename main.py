@@ -1,7 +1,13 @@
+from bigram import bigram_by_language
 from utils import (unigram_keys, assign_probs, print_unigram, assign_freqs,
-                   combine_txt_files, output_models, get_sentences, create_solutions)
+                   combine_txt_files, output_models, get_sentences, create_solutions,
+                   compare_unigrams)
 
-sentences_list = []  # list of lists, one for each line or sentence in sentence.txt
+# todo before finishing, 10 correct/incorrect sentences are correct after including 3rd language other?
+# Note: trainOT.txt is The Little Prince and Moby Dick provided but passed through google translate to get Dutch
+# which uses the same alphabet
+
+sentences_list = []  # list of lists, one for each line or sentence in sentence.txt, 10 sentences
 """[ 
     ('I'm OK.',['i', 'm', 'o','k' ),
     ('I hate AI', ['i', 'h' ....]),
@@ -10,6 +16,13 @@ sentences_list = []  # list of lists, one for each line or sentence in sentence.
 """
 sentences_file = 'sentences.txt'
 get_sentences(sentences_file, sentences_list)
+
+ten_right = []
+ten_wrong = []
+ten_right_file = '10_correct_unigram.txt'
+ten_wrong_file = '10_incorrect_unigram.txt'
+get_sentences(ten_right_file, ten_right)
+get_sentences(ten_wrong_file, ten_wrong)
 
 english_txts = ['en-moby-dick.txt', 'en-the-little-prince.txt']
 combine_txt_files(english_txts, 'trainEN.txt')  # outputs both English files as 'trainEN.TXT'
@@ -68,13 +81,6 @@ assign_probs(total_chars, unigram_models_ot, unigram=True)
 print("Spanish(Other) Unigram total chars: {}".format(total_chars))
 print_unigram(unigram_models_ot)
 
-# BIRGRAMS ENGLISH ######################################################################################
-
-
-# BIRGRAMS FRENCH ######################################################################################
-
-
-# BIRGRAMS OTHER ######################################################################################
 
 
 ######################################################################################################
@@ -86,9 +92,23 @@ unigrams = [
     ('FRENCH', unigram_models_fr),
     ('ENGLISH', unigram_models_en),
     ('OTHER', unigram_models_ot)
-    #('OTHER', ...)
 ]
 
-bigrams = []
 
-create_solutions(sentences_list, unigrams, bigrams=None)
+#create_solutions(sentences_list, unigrams, bigrams=None)  # when bigrams finished pass in here
+#create_solutions(ten_right, unigrams)
+#create_solutions(ten_wrong, unigrams)
+
+##### testing only ############
+#create_solutions(ten_right, unigrams, bigrams=None)
+#compare_unigrams(unigram_models_en, unigram_models_fr, 'uni_comparisons.txt', unigram_models_ot)
+# test_list = []
+# get_sentences('test.txt', test_list)
+# create_solutions(test_list, unigrams)
+# for index, sentence in enumerate(test_list):
+#     bigram_by_language(sentence=sentence, sol_file_name="out{}.txt".format(index+1))
+########################
+
+create_solutions(sentences_list, unigrams)
+for index, sentence in enumerate(sentences_list):
+    bigram_by_language(sentence=sentence, sol_file_name="out{}.txt".format(index+1))

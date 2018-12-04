@@ -52,7 +52,7 @@ def model_output(language_combined_txt, language):
     return language_bigram_dictionary
 
 
-def bigram_by_language(sentence):
+def bigram_by_language(sentence, sol_file_name=None):
     """
     Relies on the existence of bigram model json files. If they don't exist for a specific language A, run
         model_output(trainA.txt, A)
@@ -64,6 +64,13 @@ def bigram_by_language(sentence):
     # the algorithm is log(P(c))+sum(log(P(w|c)))
     # P(c) is 1/3, P(w|c) is the values in the language's bigram model file
     # smoothing using add-delta with delta=0.5, |vocabulary| = (27*27-1)/2 = 364
+    if type(sentence) is tuple:
+        sentence = sentence[0]
+    # for letter in sentence:
+    #     letter = letter.lower()
+    sentence = sentence.lower()
+    sentence = sentence.rstrip()
+
     DELTA = 0.5
     VOCAB = 364
     P_c = math.log10(1 / 3)
@@ -89,7 +96,11 @@ def bigram_by_language(sentence):
         modelfile.close()
     # print(bigram_OT)
 
-    with open('out_test.txt', 'w') as writefile:
+    if sol_file_name is None:
+        file_name = 'out_test.txt'
+    else:
+        file_name = sol_file_name
+    with open(file_name, 'a') as writefile:
         writefile.write('BIGRAM MODEL:\n')
 
         for i in range(1, len(new_sentence)):

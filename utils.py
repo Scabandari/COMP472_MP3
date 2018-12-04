@@ -7,6 +7,30 @@ alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g',
             'w', 'x', 'y', 'z']
 
 
+def compare_unigrams(english, french, output_file, other=None):
+    """
+    Take the tr
+    :param english:
+    :param french:
+    :return:
+    """
+    if other:
+        with open(output_file, 'a') as f:
+            for letter in alphabet:
+                f.write("letter: {}, english: {}, french: {}, other: {}\n".format(
+                    letter,
+                    english[letter]['prob'],
+                    french[letter]['prob'],
+                    other[letter]['prob']))
+    else:
+        with open(output_file, 'a') as f:
+            for letter in alphabet:
+                f.write("letter: {}, english: {}, french: {}\n".format(
+                    letter,
+                    english[letter]['prob'],
+                    french[letter]['prob']))
+
+
 def output_models(unigram_en, unigram_fr, unigram_ot=None, bigram_en=None, bigram_fr=None, bigram_ot=None):
     """
     See page 2 of documentation, for unigram & bigram, french, english + 3rd option, 6 .txt files
@@ -14,10 +38,11 @@ def output_models(unigram_en, unigram_fr, unigram_ot=None, bigram_en=None, bigra
     """
     files = [
         ('unigramEN.txt', unigram_en),
-         ('unigramFR.txt', unigram_fr),
+        ('unigramFR.txt', unigram_fr),
+        ('unigramOT.txt', unigram_ot)
         # ('bigramEN.txt', bigram_en),
         # ('bigramFR.txt', bigram_fr),
-        ('unigramOT.txt', unigram_ot),
+        # ('unigramOT.txt', unigram_ot),
         # ('bigramOT.txt', bigram_ot)
     ]
 
@@ -58,6 +83,11 @@ def most_likely_lanuage(latest_sum_of_logs):
     return most_likely
 
 
+def reset_sum_of_logs(sum_of_logs):
+    for key in sum_of_logs.keys():
+        sum_of_logs[key] = 0
+
+
 def create_solutions(sentences_list, unigrams, bigrams=None):
     """
     Given a sentence and the trained models output the solution files in txt format. See output 2. page 2 of
@@ -86,7 +116,7 @@ def create_solutions(sentences_list, unigrams, bigrams=None):
         # todo reset latest sum of logs
         output_file = "out{}.txt".format(counter)
         counter += 1
-        with open(output_file, 'a') as f:
+        with open(output_file, 'w') as f:
             original_sentence = sentence_tuple[0]
             f.write(original_sentence + "\n")
             f.write("UNIGRAM MODEL: \n")
@@ -98,18 +128,18 @@ def create_solutions(sentences_list, unigrams, bigrams=None):
                     #f.write(language + "\n")
                     model = unigram[1]  # {'a': {'freq': 1, 'prob': 0.01}, 'b'....}
                     probability = model[letter]['prob']
-                    latest_sum_of_logs_unigram[language] += math.log(probability)
+                    latest_sum_of_logs_unigram[language] += math.log10(probability)
                     output_sentence = "{}: P({}) = {}".format(language, letter, probability)
                     output_sentence += log_prob
                     output_sentence += str(latest_sum_of_logs_unigram[language])
                     output_sentence += "\n"
                     f.write(output_sentence)
             winner = most_likely_lanuage(latest_sum_of_logs_unigram)
-            output_sentence = according_to_uni + winner
+            temp_sentence = according_to_uni + winner
+            output_sentence = temp_sentence + "\n---------------------------------------------\n"
             f.write(output_sentence)
-
-            #for letter in sentence_as_list:
-                #todo bigram model
+            print("\nUnigram: {}:\n{}".format(original_sentence, temp_sentence))
+        reset_sum_of_logs(latest_sum_of_logs_unigram)
 
 
 def unigram_keys(dict_):
@@ -167,8 +197,6 @@ def assign_freqs(text_file, freq_dict, unigram=True):
             except UnicodeDecodeError:
                 print("UnicodeDecodeError\n\n\n\n")
         return
-    # unigram=False ==> bigram
-    # todo bigrams
 
 
 def assign_probs(total_instances, freq_dict, unigram=True):
@@ -184,13 +212,10 @@ def assign_probs(total_instances, freq_dict, unigram=True):
         for key in freq_dict.keys():
             frequency = freq_dict[key]['freq']
             numerator = frequency  # 0.5 already factored in when initialized
-            denominator = total_instances + 0.5*len(alphabet)**2
+            denominator = total_instances + 0.5 * len(alphabet)   # squared is for bigrams
             probability = numerator/denominator
             freq_dict[key]['prob'] = probability
         return
-
-    # unigram=False ==> bigram
-    # todo bigrams
 
 
 def get_sentences(text_file, sentences_list):
