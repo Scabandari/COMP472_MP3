@@ -1,0 +1,43 @@
+J'aime l'AI."
+UNIGRAM MODEL: 
+
+UNIGRAM: j
+FRENCH: P(j) = 0.006102179251096586 ==> log of prob of sentence so far: -5.099109317324857
+ENGLISH: P(j) = 0.0011349457550279348 ==> log of prob of sentence so far: -6.781170422117819
+OTHER: P(j) = 0.01796141152576796 ==> log of prob of sentence so far: -4.019529626447559
+
+UNIGRAM: a
+FRENCH: P(a) = 0.08388628011227148 ==> log of prob of sentence so far: -7.577402522877154
+ENGLISH: P(a) = 0.08188526459146159 ==> log of prob of sentence so far: -9.283606645946564
+OTHER: P(a) = 0.07859310593419883 ==> log of prob of sentence so far: -6.563000920602178
+
+UNIGRAM: i
+FRENCH: P(i) = 0.07318500655606035 ==> log of prob of sentence so far: -10.192167230341362
+ENGLISH: P(i) = 0.06878099581143444 ==> log of prob of sentence so far: -11.960434441817199
+OTHER: P(i) = 0.06538306502405966 ==> log of prob of sentence so far: -9.290492919239345
+
+UNIGRAM: m
+FRENCH: P(m) = 0.03065754656773262 ==> log of prob of sentence so far: -13.67704365970355
+ENGLISH: P(m) = 0.024483743677723085 ==> log of prob of sentence so far: -15.670180346835943
+OTHER: P(m) = 0.02433339340980487 ==> log of prob of sentence so far: -13.006398576848158
+
+UNIGRAM: e
+FRENCH: P(e) = 0.17102709081877793 ==> log of prob of sentence so far: -15.44297696889027
+ENGLISH: P(e) = 0.12300537626643479 ==> log of prob of sentence so far: -17.765707561917687
+OTHER: P(e) = 0.1885272349900874 ==> log of prob of sentence so far: -14.674911376672817
+
+UNIGRAM: l
+FRENCH: P(l) = 0.054009347665332684 ==> log of prob of sentence so far: -18.36157511137549
+ENGLISH: P(l) = 0.04489762808431145 ==> log of prob of sentence so far: -20.869077874177023
+OTHER: P(l) = 0.03984959564658756 ==> log of prob of sentence so far: -17.897554397356345
+
+UNIGRAM: a
+FRENCH: P(a) = 0.08388628011227148 ==> log of prob of sentence so far: -20.839868316927788
+ENGLISH: P(a) = 0.08188526459146159 ==> log of prob of sentence so far: -23.37151409800577
+OTHER: P(a) = 0.07859310593419883 ==> log of prob of sentence so far: -20.441025691510966
+
+UNIGRAM: i
+FRENCH: P(i) = 0.07318500655606035 ==> log of prob of sentence so far: -23.454633024391995
+ENGLISH: P(i) = 0.06878099581143444 ==> log of prob of sentence so far: -26.048341893876405
+OTHER: P(i) = 0.06538306502405966 ==> log of prob of sentence so far: -23.168517690148132
+According to the unigram model, the sentence is in OTHER

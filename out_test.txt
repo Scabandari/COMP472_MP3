@@ -1,0 +1,96 @@
+BIGRAM MODEL:
+
+BIGRAM: " h"
+EN: P(h| ) = -1.9469356576246688---->> log prob of sentence so far: -2.4240569123443314
+FR: P(h| ) = -2.659829976058293---->> log prob of sentence so far: -3.1369512307779557
+OT: P(h| ) = -2.258173496451821---->> log prob of sentence so far: -2.735294751171484
+
+BIGRAM: "hi"
+EN: P(i|h) = -2.0751991730784596---->> log prob of sentence so far: -4.499256085422791
+FR: P(i|h) = -3.2730914071064188---->> log prob of sentence so far: -6.4100426378843745
+OT: P(i|h) = -3.0483040158715795---->> log prob of sentence so far: -5.783598767043063
+
+BIGRAM: "i "
+EN: P( |i) = -2.7229220366816977---->> log prob of sentence so far: -7.22217812210449
+FR: P( |i) = -2.2668214241826234---->> log prob of sentence so far: -8.676864062066997
+OT: P( |i) = -2.480770972408684---->> log prob of sentence so far: -8.264369739451748
+
+BIGRAM: " m"
+EN: P(m| ) = -2.1647259412597726---->> log prob of sentence so far: -9.386904063364263
+FR: P(m| ) = -1.9822245181318783---->> log prob of sentence so far: -10.659088580198876
+OT: P(m| ) = -2.038483053657324---->> log prob of sentence so far: -10.302852793109071
+
+BIGRAM: "my"
+EN: P(y|m) = -3.151664751996554---->> log prob of sentence so far: -12.538568815360817
+FR: P(y|m) = -4.240177225553579---->> log prob of sentence so far: -14.899265805752455
+OT: P(y|m) = -7.218829748994762---->> log prob of sentence so far: -17.521682542103832
+
+BIGRAM: "y "
+EN: P( |y) = -1.9981674212660478---->> log prob of sentence so far: -14.536736236626865
+FR: P( |y) = -3.4644769598670533---->> log prob of sentence so far: -18.36374276561951
+OT: P( |y) = -2.0780232703436106---->> log prob of sentence so far: -19.599705812447443
+
+BIGRAM: " n"
+EN: P(n| ) = -2.4131710001512627---->> log prob of sentence so far: -16.949907236778127
+FR: P(n| ) = -2.085709777341853---->> log prob of sentence so far: -20.449452542961364
+OT: P(n| ) = -2.295819006031049---->> log prob of sentence so far: -21.895524818478492
+
+BIGRAM: "na"
+EN: P(a|n) = -2.8501306029478957---->> log prob of sentence so far: -19.800037839726023
+FR: P(a|n) = -2.464647156483158---->> log prob of sentence so far: -22.91409969944452
+OT: P(a|n) = -2.290285401609292---->> log prob of sentence so far: -24.185810220087784
+
+BIGRAM: "am"
+EN: P(m|a) = -2.7939943034310257---->> log prob of sentence so far: -22.59403214315705
+FR: P(m|a) = -2.877567473543138---->> log prob of sentence so far: -25.79166717298766
+OT: P(m|a) = -2.536495105182122---->> log prob of sentence so far: -26.722305325269907
+
+BIGRAM: "me"
+EN: P(e|m) = -2.2932257531943474---->> log prob of sentence so far: -24.8872578963514
+FR: P(e|m) = -2.037010069104531---->> log prob of sentence so far: -27.82867724209219
+OT: P(e|m) = -2.3241648398158534---->> log prob of sentence so far: -29.04647016508576
+
+BIGRAM: "e "
+EN: P( |e) = -1.4598574369207291---->> log prob of sentence so far: -26.34711533327213
+FR: P( |e) = -1.2979552203904823---->> log prob of sentence so far: -29.12663246248267
+OT: P( |e) = -1.4411905440149928---->> log prob of sentence so far: -30.487660709100755
+
+BIGRAM: " s"
+EN: P(s| ) = -1.7893699670835148---->> log prob of sentence so far: -28.136485300355645
+FR: P(s| ) = -1.9056764753785336---->> log prob of sentence so far: -31.032308937861206
+OT: P(s| ) = -1.8617739038997594---->> log prob of sentence so far: -32.34943461300051
+
+BIGRAM: "s "
+EN: P( |s) = -1.651841894559367---->> log prob of sentence so far: -29.788327194915013
+FR: P( |s) = -1.3930390140282851---->> log prob of sentence so far: -32.42534795188949
+OT: P( |s) = -1.6086030321674345---->> log prob of sentence so far: -33.95803764516795
+
+BIGRAM: " j"
+EN: P(j| ) = -3.169233807055443---->> log prob of sentence so far: -32.957561001970454
+FR: P(j| ) = -2.348965703331902---->> log prob of sentence so far: -34.77431365522139
+OT: P(j| ) = -3.1589256931103566---->> log prob of sentence so far: -37.1169633382783
+
+BIGRAM: "je"
+EN: P(e|j) = -3.674565917683283---->> log prob of sentence so far: -36.632126919653736
+FR: P(e|j) = -2.521125885437844---->> log prob of sentence so far: -37.29543954065924
+OT: P(e|j) = -3.1361520683466497---->> log prob of sentence so far: -40.25311540662495
+
+BIGRAM: "ef"
+EN: P(f|e) = -3.114061194084139---->> log prob of sentence so far: -39.74618811373787
+FR: P(f|e) = -3.258729299835276---->> log prob of sentence so far: -40.55416884049451
+OT: P(f|e) = -3.6733989195294106---->> log prob of sentence so far: -43.92651432615436
+
+BIGRAM: "ff"
+EN: P(f|f) = -3.1527422392464826---->> log prob of sentence so far: -42.89893035298436
+FR: P(f|f) = -3.1265811005144113---->> log prob of sentence so far: -43.680749941008926
+OT: P(f|f) = -7.218829748994762---->> log prob of sentence so far: -51.145344075149126
+
+BIGRAM: "fe"
+EN: P(e|f) = -2.9127490346419025---->> log prob of sentence so far: -45.81167938762626
+FR: P(e|f) = -2.9864742721474293---->> log prob of sentence so far: -46.66722421315636
+OT: P(e|f) = -3.16394869413199---->> log prob of sentence so far: -54.309292769281114
+
+BIGRAM: "e "
+EN: P( |e) = -1.4598574369207291---->> log prob of sentence so far: -47.27153682454699
+FR: P( |e) = -1.2979552203904823---->> log prob of sentence so far: -47.965179433546844
+OT: P( |e) = -1.4411905440149928---->> log prob of sentence so far: -55.75048331329611

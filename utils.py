@@ -98,7 +98,7 @@ def create_solutions(sentences_list, unigrams, bigrams=None):
                     #f.write(language + "\n")
                     model = unigram[1]  # {'a': {'freq': 1, 'prob': 0.01}, 'b'....}
                     probability = model[letter]['prob']
-                    latest_sum_of_logs_unigram[language] += math.log(probability)
+                    latest_sum_of_logs_unigram[language] += math.log10(probability)
                     output_sentence = "{}: P({}) = {}".format(language, letter, probability)
                     output_sentence += log_prob
                     output_sentence += str(latest_sum_of_logs_unigram[language])
@@ -167,8 +167,6 @@ def assign_freqs(text_file, freq_dict, unigram=True):
             except UnicodeDecodeError:
                 print("UnicodeDecodeError\n\n\n\n")
         return
-    # unigram=False ==> bigram
-    # todo bigrams
 
 
 def assign_probs(total_instances, freq_dict, unigram=True):
@@ -184,13 +182,11 @@ def assign_probs(total_instances, freq_dict, unigram=True):
         for key in freq_dict.keys():
             frequency = freq_dict[key]['freq']
             numerator = frequency  # 0.5 already factored in when initialized
-            denominator = total_instances + 0.5*len(alphabet)**2
+            #denominator = total_instances + 0.5*len(alphabet)**2
+            denominator = total_instances + 0.5 * len(alphabet)   # squared is for bigrams
             probability = numerator/denominator
             freq_dict[key]['prob'] = probability
         return
-
-    # unigram=False ==> bigram
-    # todo bigrams
 
 
 def get_sentences(text_file, sentences_list):

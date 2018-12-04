@@ -1,0 +1,39 @@
+I hate AI.
+
+UNIGRAM MODEL: 
+
+UNIGRAM: i
+FRENCH: P(i) = 0.07318500655606035 ==> log of prob of sentence so far: -2.6147647074642077
+ENGLISH: P(i) = 0.06878099581143444 ==> log of prob of sentence so far: -2.676827795870635
+OTHER: P(i) = 0.06538306502405966 ==> log of prob of sentence so far: -2.727491998637166
+
+UNIGRAM: h
+FRENCH: P(h) = 0.007834849460143537 ==> log of prob of sentence so far: -7.463938324588929
+ENGLISH: P(h) = 0.0660267084206519 ==> log of prob of sentence so far: -5.3945237416442176
+OTHER: P(h) = 0.03174896174291534 ==> log of prob of sentence so far: -6.177387253825833
+
+UNIGRAM: a
+FRENCH: P(a) = 0.08388628011227148 ==> log of prob of sentence so far: -9.942231530141227
+ENGLISH: P(a) = 0.08188526459146159 ==> log of prob of sentence so far: -7.896959965472963
+OTHER: P(a) = 0.07859310593419883 ==> log of prob of sentence so far: -8.720858547980452
+
+UNIGRAM: t
+FRENCH: P(t) = 0.06826026941826582 ==> log of prob of sentence so far: -12.62665891871052
+ENGLISH: P(t) = 0.0924210925142768 ==> log of prob of sentence so far: -10.278360017893963
+OTHER: P(t) = 0.06071647975132217 ==> log of prob of sentence so far: -11.522398670665813
+
+UNIGRAM: e
+FRENCH: P(e) = 0.17102709081877793 ==> log of prob of sentence so far: -14.39259222789724
+ENGLISH: P(e) = 0.12300537626643479 ==> log of prob of sentence so far: -12.373887232975704
+OTHER: P(e) = 0.1885272349900874 ==> log of prob of sentence so far: -13.190911470490473
+
+UNIGRAM: a
+FRENCH: P(a) = 0.08388628011227148 ==> log of prob of sentence so far: -16.870885433449537
+ENGLISH: P(a) = 0.08188526459146159 ==> log of prob of sentence so far: -14.87632345680445
+OTHER: P(a) = 0.07859310593419883 ==> log of prob of sentence so far: -15.734382764645092
+
+UNIGRAM: i
+FRENCH: P(i) = 0.07318500655606035 ==> log of prob of sentence so far: -19.485650140913744
+ENGLISH: P(i) = 0.06878099581143444 ==> log of prob of sentence so far: -17.553151252675086
+OTHER: P(i) = 0.06538306502405966 ==> log of prob of sentence so far: -18.461874763282257
+According to the unigram model, the sentence is in ENGLISH
