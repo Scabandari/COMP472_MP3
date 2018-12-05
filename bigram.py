@@ -72,7 +72,8 @@ def bigram_by_language(sentence, sol_file_name=None):
     sentence = sentence.rstrip()
 
     DELTA = 0.5
-    VOCAB = 364
+    VOCAB = len(alphabets_list)*len(alphabets_list)
+    print(VOCAB)
     P_c = math.log10(1 / 3)
 
     new_sentence = sentence.translate(translator)  # get rid of punctuations
@@ -113,15 +114,32 @@ def bigram_by_language(sentence, sol_file_name=None):
                 P_w_c = math.log10((results[language]['bigram_model'][bigram] + DELTA)/results[language]['sum'])
                 results[language]['probability'] += P_w_c
                 writefile.write(language+": P("+bigram[1]+"|"+bigram[0]+") = " + str(P_w_c)+"---->> log prob of sentence so far: " + str(results[language]['probability'])+"\n")
-        # TODO: find key to the max nested value
-        # TODO: also figure out why the answers are all negative
+        placeholder = -9999999999.99999
+        best_guess = ''
+        for language in results:
+            if results[language]['probability']>placeholder:
+                best_guess=language
+                placeholder = results[language]['probability']
+
+        writefile.write("According to the Bigram model, the sentence is in " + best_guess)
+        writefile.close()
+        return best_guess
     pass
 
 
 if __name__ == "__main__":
-    # LANGUAGE = 'EN'
+    # LANGUAGE = 'OT'
     # language_combined_text = 'train' + LANGUAGE + '.txt'
-    # language_model = model_output(language_combined_text, LANGUAGE)
+    # language_model = model_output(language_combined_text, LANGUAGE, 'bigram_experiment_')
     # print(language_model)
+    from utils import get_sentences
+    sentences_list = []
+    sentences_file = 'experiment2_sentences.txt'
+    get_sentences(sentences_file, sentences_list)
 
-    bigram_by_language("\"hi, my name's jeffe.\"")
+
+    with open('bigram_experiment.txt', 'a') as writefile:
+        for i in range(len(sentences_list)):
+            guess = bigram_by_language(sentences_list[i][0], sol_file_name=str(i)+'bigram_test.txt', model_filename='bigram_experiment_')
+            writefile.write(sentences_list[i][0] + "           Best guess: " + guess+'\n\n')
+    # bigram_by_language('sophie a mange', model_filename='bigram_experiment_')
